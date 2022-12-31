@@ -5,7 +5,7 @@
 }
 :root
 {
-    --bhagwa:#E94B3CFF;
+    --bhagwa:#30D5C8;
     --bal:#101820FF;
     --dar:#2D2926FF;
 }
@@ -121,8 +121,22 @@ align-items: center;
  margin-left: 30px;
  color:var(--bhagwa);
  margin-top: 5px;
+ 
+}
+.zz
+{
+  z-index: -1;
+}
+.up{
+  z-index: 2;
 }
 
+.fa-pause
+{
+  position: absolute;
+  visibility: hidden;
+
+}
 .make_fancy_tacke_bar div:nth-of-type(2) nav:nth-of-type(2)
 {
    
@@ -334,18 +348,19 @@ align-items: center;
   }       
   .h11
   { position: relative;
-    height: 20%;
-   font-size: 20px;
-    color:white ;
+    height: 10%;
+   font-size: 15px;
+    color:rgb(251, 251, 251);
     letter-spacing: 7px;
-    left: -30%;
+    left: -40%;
+    box-shadow: 0px -5px 10px -5px var(--bhagwa) inset;
     border-bottom: 2px solid var(--bhagwa);
     
-  } 
+  }
   .data
   {  position: relative;
     background-color:rgba(149, 149, 147, 0.127);
-    height: 80%;
+    height: 90%;
     max-width: 100vw;
     width: 100vw;
     box-sizing: border-box;
@@ -390,7 +405,7 @@ align-items: center;
      outline: none;
      box-sizing: border-box;
      border-color: transparent;
-     font-size: 15px;
+     font-size: 10px;
      letter-spacing: 5px;
      text-align: center;
      color:rgb(183, 179, 179);
@@ -412,6 +427,7 @@ align-items: center;
     outline: none;
     border-color: transparent;
     color: var(--bhagwa);
+    font-size: 11px;
     background-color: transparent;
    
   }
@@ -420,7 +436,7 @@ align-items: center;
     position:absolute;
     height: 113px;
     width: 150px;
-    min-height: 113px;
+    min-height: 130px;
     min-width: 150px;
     border-radius: 5px;
     background-color: rgba(25, 24, 24, 0.489);
