@@ -1,13 +1,14 @@
 *{
     margin: 0px;
     padding: 0px;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Oswald', sans-serif;
 }
 :root
 {
-    --bhagwa:#30D5C8;
-    --bal:#101820FF;
-    --dar:#2D2926FF;
+    --bhagwa:red;
+    --bal:#343736;
+    --dar:rgb(96, 92, 89);
+    --uls:rgba(255, 0, 0, 0.527);
 }
 #main
 {   height: 100vh;
@@ -217,8 +218,8 @@ align-items: center;
 }
 .list_of_topic li:hover
 {
-    background-color: var(--bhagwa);
-    color: rgb(201, 195, 195);
+    background-color: var(--uls);
+    color: rgb(233, 230, 230);
 }
 .content
 {
