@@ -1,0 +1,101 @@
+@media(max-width:64rem) {
+
+    #Nav img {
+
+        height: 40px;
+    }
+
+    #Nav h1 {
+
+        font-size: 12px;
+    }
+
+    #Nav .content {
+
+        width: 70%;
+    }
+
+    #Nav .content input {
+        width: 45%;
+        font-size: 12px;
+    }
+
+    #Nav .content input::-webkit-input-placeholder {
+        font-size: 9px;
+    }
+
+    #Nav .content div {
+
+        width: 30%;
+    }
+
+    #bl12 {
+
+        width: 100vw;
+    }
+
+    #bl12 ul {
+        width: 60%;
+    }
+
+    #bl12 ul li {
+        font-size: 12px;
+
+    }
+
+    .main {
+        width: 100vw;
+    }
+
+    .upper_section,
+    .navbar {
+
+        width: 100vw;
+    }
+
+   #set4
+   {
+    
+    width: 100vw;
+   }
+   .audio
+   {
+    height: 10px;
+    width: 10px;
+
+   }
+   .make_fancy_tacke_bar
+   { width:100%;
+    
+   }
+   .make_fancy_tacke_bar div:nth-of-type(1) img
+   {
+     height: 20px;
+   }
+   
+   
+   .make_fancy_tacke_bar div:nth-of-type(1) h3
+   {
+    font-size: 12px;
+   }
+   
+   .make_fancy_tacke_bar div:nth-of-type(2) nav:nth-of-type(1) i
+   {
+     font-size: 12px;
+   }
+   .make_fancy_tacke_bar div:nth-of-type(2) nav:nth-of-type(2) input
+   {
+     width: 300px;
+   }
+   .make_fancy_tacke_bar div:nth-of-type(3) input
+   {
+    width:40px;
+   }
+   .make_fancy_tacke_bar div:nth-of-type(3) i
+   {
+    font-size: 13px;
+   }
+  
+
+
+}

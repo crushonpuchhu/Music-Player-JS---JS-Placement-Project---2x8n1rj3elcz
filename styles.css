@@ -1,3 +1,5 @@
+@import "respo.css";
+
 *{
     margin: 0px;
     padding: 0px;
@@ -28,8 +30,16 @@ justify-content: space-evenly;
 {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr ;
 }
+#seto
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr ;
+}
+
+
 .lower_section
 {
   display: flex;
@@ -340,7 +350,7 @@ align-items: center;
   color: var(--bhagwa);
 }
          
-  .top_10_album,.new_release,  .Artist
+  .top_10_album,.new_release
   {
     
     display: flex;
@@ -389,6 +399,10 @@ align-items: center;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+  }
+  .card:hover
+  {
+    background-color: #1c1d1d;
   }
   #im123
   {

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <link rel="icon" href="./ic.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./search.css">
+    <title>Search</title>
+</head>
+<body>
+<div id="main">
+
+    <div id="sub">
+       <section class="sub1">
+        <div class="search_bar">
+         <div class="serach">
+           <input class="put" id="serach_1" placeholder="Search" type="text">
+           <img id="hit" src="./s1.png" alt="search">
+         </div>
+   
+        </div>
+        <div class="content_bar stor">
+        
+        </div>
+       </section>
+       <section class="sub2">
+        <audio id="song_player" style="position: absolute;opacity:0; z-index:-1;" controls src=""></audio>
+        <div class="player">
+          <img class="theme" src="https://www.learnreligions.com/thmb/IPI16wMAifaCfsAKm2Ez-NA-KY4=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/evening-at-varanasi-610625330-58e54bd25f9b58ef7e7c8bb9.jpg" alt="poster3">
+          <footer class="foter">
+
+            <div class="ione">
+              <i class="fa-solid fa-backward"></i>
+               <div class="paly_pous">
+                <i style="position: relative;" class="fa-solid fa-play"></i>
+                <i style="position: absolute;" class="fa-solid fa-pause"></i>
+              </div>
+               <i class="fa-solid fa-forward"></i>
+            </div>
+            <div class="rang">
+              <input id="move" value="0" min="0" type="range">
+            </div>
+
+          </footer>
+        </div>
+       </section>
+    </div>
+
+
+
+
+
+</div>
+<script src="./search.js"></script> 
+</body>
+</html>

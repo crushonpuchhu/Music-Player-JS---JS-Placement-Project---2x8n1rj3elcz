@@ -4,6 +4,14 @@ setTimeout(()=>{
 },200)
 const top_track=new Array();
 const audi=document.querySelector(".audio");
+setTimeout(()=>{
+    const ran=Math.round(Math.random()*10);
+    audi.src=top_track[ran].previewURL;
+    name1.innerHTML=top_track[ran].name;
+    poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[ran].albumId+"/images/500x500.jpg";
+    audi.setAttribute("controls","");
+},800)
+
 const poster=d.querySelector("#poster");
 const name1=d.querySelector("#name1");
 
@@ -14,58 +22,53 @@ function run()
 {
    
 const card=d.querySelectorAll("#card12");
-const card2=d.querySelectorAll(".gom");
 card.forEach((e,i)=>{
-    e.addEventListener("mouseenter",()=>{
+     let co=true;
+    e.addEventListener("click",()=>{
+        audi.src=top_track[i].previewURL;
+        name1.innerHTML=top_track[i].name;
+        poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[i].albumId+"/images/500x500.jpg";
+        audi.setAttribute("controls","");
         
-        if(count%2==0)
-        {   card2[i].style.visibility="visible";
-            img1[i].style.visibility="visible";
-        }
+        audio_control()
+        // play.style.visibility="hidden";
+        // d.querySelector(".fa-pause").style.visibility="visible";
+       if(co)
+       {
         
-      })
-      e.addEventListener("mouseleave",()=>{
+
+
         
-        if(count%2==0)
-        {    card2[i].style.visibility="hidden";
-            img2[i].style.visibility="hidden";
-        }
+      // audi.setAttribute("autoplay","");
+       d.querySelector(".fa-pause").style.visibility="visible";
+       play.style.visibility="hidden";
+       audi.setAttribute("autoplay","");
+       }
+       else
+       {
         
-        img1[i].style.visibility="hidden";
+       
+        play.style.visibility="visible";
+        d.querySelector(".fa-pause").style.visibility="hidden";
+        audi.pause();
+       }
+       co=!co;
     })
+
+
     d.querySelector(".fa-pause").addEventListener("click",()=>{
         audi.pause();
         play.style.visibility="visible";
         d.querySelector(".fa-pause").style.visibility="hidden";
-        card2[i].style.visibility="hidden";
-        count=count+1;
      })
-     let y=0
-      setInterval(()=>{
-       
-        d.querySelector("#po").innerHTML="00:"+Math.floor(audi.currentTime);
-        
-        if(audi.ended&&y==0)
-        {   console.log("red")
-            play.style.visibility="visible";
-            d.querySelector(".fa-pause").style.visibility="hidden";
-            d.querySelector(".range").value=0;
-            card2[i].style.visibility="hidden";
-            img2[i].style.visibility="hidden";
-            y=y+1;
-            count=2;
-           
-        }
-        else
-        {
-            d.querySelector(".range").value=Math.floor(audi.currentTime)
-            if(y!=0)
-            {
-                d.querySelector(".range").value=0;                
-            }
-        }
-        
-    },1000)
+     play.addEventListener("click",()=>{
+        audi.play();
+        play.style.visibility="hidden";
+        d.querySelector(".fa-pause").style.visibility="visible";
+     })
+
+    
+      
      
 
 
@@ -73,64 +76,15 @@ card.forEach((e,i)=>{
     
 })
 
-
-
-const img1=d.querySelectorAll(".im34");
-const img2=d.querySelectorAll(".im35");
-img1.forEach((e,i)=>{
-    
-    
-   e.addEventListener("click",()=>{
-             count=1;
-             audi.src=top_track[i].previewURL;
-             audio_control()
-             play.style.visibility="hidden";
-           
-             d.querySelector(".fa-pause").style.visibility="visible";
-            
-             d.querySelector(".fa-pause").addEventListener("click",()=>{
-                audi.pause();
-                play.style.visibility="visible";
-                d.querySelector(".fa-pause").style.visibility="hidden";
-                img2[i].style.visibility="hidden";
-                count=2;
-             })
-             audi.setAttribute("controls","");
-             audi.setAttribute("autoplay","");
-            poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[i].albumId+"/images/500x500.jpg";
-            name1.innerHTML=top_track[i].name;
-           e.style.visibility="hidden";
-           img2[i].style.visibility="visible";
-          
-        //    d.querySelector(".pp").innerHTML=audi.duration
-            })
-
-            img2[i].addEventListener("click",()=>{
-                count=2;
-                audi.pause();
-                d.querySelector(".fa-pause").style.visibility="hidden";
-                play.style.visibility="visible";
-                play.classList.add("up");
-                e.style.visibility="visible";
-           img2[i].style.visibility="hidden";
-           
-            })
-
-         
-
-
-
-
-})
-
 }
 
+run();
 //-------------------------------------------------------------card js----------end--------------------------------------------------------//
 
 //https://api.napster.com/v2.0/tracks/top?limit=5&apikey=NTAzOTE3OTMtNGIxNy00YzdkLWExMDAtYTk2MzA5MDM3ZGFj//
 /////api// cllass//
 const one=d.querySelector("#first");
-const url1="https://api.napster.com/v2.0/tracks/top?limit=100&apikey=NTAzOTE3OTMtNGIxNy00YzdkLWExMDAtYTk2MzA5MDM3ZGFj";
+const url1="https://api.napster.com/v2.0/tracks/top?limit=20&apikey=NTAzOTE3OTMtNGIxNy00YzdkLWExMDAtYTk2MzA5MDM3ZGFj";
 const get1= async ()=>{
    const ans= await(await fetch(url1)).json()
    ans.tracks.forEach((e,i)=>{
@@ -157,22 +111,11 @@ const get1= async ()=>{
      input2.classList.add("h4");
      input2.value=e.artistName;
      ///-------------------------------///
-     const div2=d.createElement("div");
-      div2.classList.add("gom");
-      ///////////---------------/////////
-      const img_sub1=d.createElement("img");
-      img_sub1.classList.add("im34");
-      img_sub1.src="./icons8-play-button-circled-100.png";
-      img_sub1.alt="play";
-      ///-----------------------//
-      const img_sub2=d.createElement("img");
-      img_sub2.classList.add("im35");
-      img_sub2.src="./icons8-pause-button-stop.png";
-      img_sub2.alt="pouse";
+     
 
       ///----apppends-////
-      div2.append(img_sub1,img_sub2);
-      div1.append(img_main,input1,input2,div2);
+    
+      div1.append(img_main,input1,input2);
       ////-------------////
       one.append(div1);
 
@@ -195,7 +138,7 @@ async function get2()
   // console.log(alb);////
    alb.albums.forEach((e,i)=>{
     // console.log(i,"=",e.id)//
-     const tracks2=fetch("https://api.napster.com/v2.2/albums/"+e.id+"/tracks?apikey=NTAzOTE3OTMtNGIxNy00YzdkLWExMDAtYTk2MzA5MDM3ZGFj");
+     const tracks2=fetch("https://api.napster.com/v2.2/albums/"+e.id+"/tracks?limit=3&apikey=NTAzOTE3OTMtNGIxNy00YzdkLWExMDAtYTk2MzA5MDM3ZGFj");
      tracks2.then((data)=>{
         data.json().then((data)=>{
 
@@ -227,22 +170,11 @@ async function get2()
                 input2.classList.add("h4");
                 input2.value=e.artistName;
                 ///-------------------------------///
-                const div2=d.createElement("div");
-                 div2.classList.add("gom");
-                 ///////////---------------/////////
-                 const img_sub1=d.createElement("img");
-                 img_sub1.classList.add("im34");
-                 img_sub1.src="./icons8-play-button-circled-100.png";
-                 img_sub1.alt="play";
-                 ///-----------------------//
-                 const img_sub2=d.createElement("img");
-                 img_sub2.classList.add("im35");
-                 img_sub2.src="./icons8-pause-button-stop.png";
-                 img_sub2.alt="pouse";
+                
            
                  ///----apppends-////
-                 div2.append(img_sub1,img_sub2);
-                 div1.append(img_main,input1,input2,div2);
+                 
+                 div1.append(img_main,input1,input2);
                  mid.append(div1);
 
 
@@ -260,7 +192,7 @@ async function get2()
 }
 get2();
 
-// console.log(top_track);
+// console.log(top_track)
 
 
 
@@ -287,13 +219,12 @@ const play=d.querySelector("#paly");
 
 
 play.addEventListener("click",()=>{
-    count=2;
+    
     audi.play();
     play.style.visibility="hidden";
     d.querySelector(".fa-pause").style.visibility="visible";
-    d.querySelector(".fa-pause").classList.add("up");
     
-    cns();
+    audio_control()
     d.querySelector(".fa-pause").addEventListener("click",()=>{
         
         audi.pause();
@@ -327,89 +258,85 @@ function audio_control()
    //d.querySelector(".range").setAttribute("range",Math.floor(audi.duration)) ; 
     
     let h=0;
-    
-    setInterval(()=>{
+    let ad=audi.ended;
+   const df= setInterval(()=>{
        
             //d.querySelector(".range").value=Math.floor(audi.currentTime)
         
        
         d.querySelector("#po").innerHTML="00:"+Math.floor(audi.currentTime);
-        
-        if(audi.ended && h==0)
+        d.querySelector(".range").value=Math.floor(audi.currentTime)
+       
+        if(ad)
         {   
-               
+            clearInterval(df);
             play.style.visibility="visible";
             d.querySelector(".fa-pause").style.visibility="hidden";
             d.querySelector(".range").value=0;
-            audi.currentTime=0;
-            h=h+1;
+            
         }
-        else
-        {   
-            d.querySelector(".range").value=Math.floor(audi.currentTime)
-            if(h!=0)
-            {
-                d.querySelector(".range").value=0;                
-            }
-        }
-        
+       
+        ad=audi.ended;
         
         
     },1000)
-
+    document.querySelector(".range").addEventListener("change",(e)=>{
+        console.log(e.target.value);
+        audi.currentTime=e.target.value;
+     })
     
 }
 
 
 ///////====//
-function cns()
-{
-    const p=d.querySelector(".pp");
-    d.querySelector(".range").value=0;
+// function cns()
+// {
+//     const p=d.querySelector(".pp");
+//     d.querySelector(".range").value=0;
      
-    setInterval(()=>{
+//     setInterval(()=>{
         
-       p.innerHTML="00 :"+Math.floor(audi.duration); 
-        d.querySelector(".range").setAttribute("max",Math.floor(audi.duration)) 
+//        p.innerHTML="00 :"+Math.floor(audi.duration); 
+//         d.querySelector(".range").setAttribute("max",Math.floor(audi.duration)) 
          
-    },1000)
+//     },1000)
 
      
-    let k=0;
+//     let k=0;
     
-    const df=setInterval(()=>{
+//     const df=setInterval(()=>{
        
-            //d.querySelector(".range").value=Math.floor(audi.currentTime)
+//             //d.querySelector(".range").value=Math.floor(audi.currentTime)
         
-            d.querySelector(".range").value=Math.floor(audi.currentTime)  
-        d.querySelector("#po").innerHTML="00:"+Math.floor(audi.currentTime);
+//             d.querySelector(".range").value=Math.floor(audi.currentTime)  
+//         d.querySelector("#po").innerHTML="00:"+Math.floor(audi.currentTime);
         
-        if(audi.ended && k==0)
-        {   
+//         if(audi.ended && k==0)
+//         {   
                
-            play.style.visibility="visible";
-            d.querySelector(".fa-pause").style.visibility="hidden";
-            d.querySelector(".range").value=0;
-            k=k+1;
-        }
-        else
-        {    if(k!=0)
-            {
-                d.querySelector(".range").value=0;      
-                clearInterval(df);          
-            }
+//             play.style.visibility="visible";
+//             d.querySelector(".fa-pause").style.visibility="hidden";
+//             d.querySelector(".range").value=0;
+//             k=k+1;
+//         }
+//         else
+//         {    if(k!=0)
+//             {
+//                 d.querySelector(".range").value=0;      
+//                 clearInterval(df);          
+//             }
            
               
             
               
            
             
-        }
+//         }
         
         
         
-    },1000)
-}
+//     },1000)
+// }
 
 
 
@@ -424,5 +351,94 @@ vol.addEventListener("change",(e)=>{
 })
 
 //////---------------------/////////
-// const backward=d.querySelector(".fa-backward");
+ const backward=d.querySelector(".fa-backward");
+ backward.addEventListener("click",()=>{
+    const ran1=Math.round(Math.random()*10)+"";
+    audi.src=top_track[ran1].previewURL;
+    audi.play();
+    name1.innerHTML=top_track[ran1].name;
+    poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[ran1].albumId+"/images/500x500.jpg";
+    audi.setAttribute("controls","");
+    play.style.visibility="hidden";
+    d.querySelector(".fa-pause").style.visibility="visible";
+ })
 
+ const forward=d.querySelector(".fa-forward");
+ forward.addEventListener("click",()=>{
+    const ran1=Math.round(Math.random()*10);
+    audi.src=top_track[ran1].previewURL;
+    audi.play();
+    name1.innerHTML=top_track[ran1].name;
+    poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[ran1].albumId+"/images/500x500.jpg";
+    audi.setAttribute("controls","");
+    play.style.visibility="hidden";
+    d.querySelector(".fa-pause").style.visibility="visible";
+ })
+ 
+ audi.addEventListener("ended",()=>{
+   
+    const ra=Math.round(Math.random()*10)+""+Math.round(Math.random()*10);
+    audi.src=top_track[ra].previewURL;
+    audi.play();
+    name1.innerHTML=top_track[ra].name;
+    poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[ra].albumId+"/images/500x500.jpg";
+    audi.setAttribute("controls","");
+   
+  
+  
+    
+ })
+
+
+
+ const list_of_topic_100=d.querySelectorAll(".list_of_topic li");
+ const filt=d.querySelectorAll(".box");
+ list_of_topic_100[0].addEventListener("click",()=>{
+   filt[0].style.visibility="visible";
+   filt[1].style.visibility="visible";
+   // d.querySelector(".middel_section").id="";
+ })
+ list_of_topic_100[1].addEventListener("click",()=>{
+        filt[1].style.visibility="hidden";
+        filt[0].style.visibility="visible";
+      //   d.querySelector(".middel_section").setAttribute("id","seto");
+ })
+ list_of_topic_100[2].addEventListener("click",()=>{
+   filt[0].style.visibility="hidden";
+   filt[1].style.visibility="visible";
+   // d.querySelector(".middel_section").setAttribute("id","seto");
+ })
+
+ const input_div=d.querySelector(".filletr");
+ input_div.addEventListener("keydown",(e)=>{
+   if(e.key=="Enter")
+   {
+      
+      if(e.target.value=="all"||e.target.value=="All")
+      {
+         filt[0].style.visibility="visible";
+         filt[1].style.visibility="visible";
+      }
+      else if(e.target.value=="Top 100 track"||e.target.value=="top 100 track"||e.target.value=="Top 100 "||e.target.value=="top"||e.target.value=="top")
+      {
+         filt[1].style.visibility="hidden";
+        filt[0].style.visibility="visible";
+      }
+      else if(e.target.value=="New Release"||e.target.value=="new release"||e.target.value=="New"||e.target.value=="release"||e.target.value=="new")
+      {
+         filt[0].style.visibility="hidden";
+         filt[1].style.visibility="visible";
+      }
+      else
+      {
+
+      }
+      e.target.value=null;
+   }
+  
+   
+ 
+
+ })
+ 
+ 
