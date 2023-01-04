@@ -4,3 +4,4 @@ export function rate()
 }
 const ad=90;
 export {ad}
+

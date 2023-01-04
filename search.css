@@ -42,7 +42,6 @@ grid-template-rows:1fr 4fr;
    display: flex;
    justify-content: center;
    align-items: center;
-
 }
 .search_bar
 {
@@ -156,9 +155,8 @@ grid-template-rows:1fr 4fr;
 
 .name2
 {
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-  
+   color: rgb(255, 255, 255);
+   font-size: 20px;
    outline: none;
    border-color: transparent;
    text-align: center;
@@ -283,7 +281,7 @@ grid-template-rows:1fr 4fr;
         height: 100vh;
         display: grid;
         grid-template-columns:1fr ;
-        grid-template-rows:2fr 1fr;
+        grid-template-rows:1fr 1fr;
     
     }
 
@@ -609,7 +607,7 @@ grid-template-rows:1fr 4fr;
     height: 8%;
     min-height: 8%;
     max-height: 0px;
-    width: 40%;
+    width: 100%;
     box-sizing: border-box;
     margin: 10px;
     display: flex;
@@ -961,7 +959,7 @@ grid-template-rows:1fr 4fr;
 {
     
     #sub
-    {  background-color: white;
+    {  
         position: relative;
         height: 100vh;
         display: grid;
@@ -972,13 +970,10 @@ grid-template-rows:1fr 4fr;
 
   .sub2
   {
-    background-color:white;
+   
    
   }
-  body
-  {
-    background-color:white;
-  }
+  
 
     .player{
         background-color:rgb(21, 20, 20);
@@ -1098,13 +1093,11 @@ grid-template-rows:1fr 4fr;
     flex-direction: column;
     overflow-y:auto;
 }
-.stor::-webkit-scrollbar {
+.stor::-webkit-scrollbar 
+{
     display: none;
-  }
   
-
- 
-
+}
 .card
 {
     border-bottom: 1.3px solid black;
