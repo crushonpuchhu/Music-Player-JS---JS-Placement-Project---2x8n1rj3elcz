@@ -446,4 +446,32 @@ vol.addEventListener("change",(e)=>{
 
  })
  
+ input_div.addEventListener("dblclick",(e)=>{
+  
+      
+      if(e.target.value=="all"||e.target.value=="All")
+      {
+         filt[0].style.visibility="visible";
+         filt[1].style.visibility="visible";
+      }
+      else if(e.target.value=="Top 100 track"||e.target.value=="top 100 track"||e.target.value=="Top 100 "||e.target.value=="top"||e.target.value=="top")
+      {
+         filt[1].style.visibility="hidden";
+        filt[0].style.visibility="visible";
+      }
+      else if(e.target.value=="New Release"||e.target.value=="new release"||e.target.value=="New"||e.target.value=="release"||e.target.value=="new")
+      {
+         filt[0].style.visibility="hidden";
+         filt[1].style.visibility="visible";
+      }
+      else
+      {
+
+      }
+      e.target.value="";
+   }
+  
+   
  
+
+ )
