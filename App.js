@@ -1,7 +1,10 @@
 const d=document;
+let pervi;
+
 setTimeout(()=>{
     d.querySelector(".pp").innerHTML=(audi.duration/60).toFixed(2);  //num.toFixed(2)
 },200)
+
 const top_track=new Array();
 const audi=document.querySelector(".audio");
 setTimeout(()=>{
@@ -29,10 +32,11 @@ card.forEach((e,i)=>{
         name1.innerHTML=top_track[i].name;
         poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[i].albumId+"/images/500x500.jpg";
         audi.setAttribute("controls","");
-        
+     
         audio_control()
         // play.style.visibility="hidden";
         // d.querySelector(".fa-pause").style.visibility="visible";
+        fuv(i)
        if(co)
        {
         
@@ -378,22 +382,50 @@ vol.addEventListener("change",(e)=>{
     audi.setAttribute("controls","");
     play.style.visibility="hidden";
     d.querySelector(".fa-pause").style.visibility="visible";
- })
- 
- audi.addEventListener("ended",()=>{
-   
-    const ra=Math.round(Math.random()*10)+""+Math.round(Math.random()*10);
-    audi.src=top_track[ra].previewURL;
-    audi.play();
-    name1.innerHTML=top_track[ra].name;
-    poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[ra].albumId+"/images/500x500.jpg";
-    audi.setAttribute("controls","");
-   
-  
-  
-    
+
  })
 
+ 
+
+
+
+ function fuv(io)
+ {  let op=io;
+   audi.addEventListener("ended",()=>{
+    
+      //  const ra=Math.round(Math.random()*10)+""+Math.round(Math.random()*10);
+      op=op+1;
+      pervi=op;
+       audi.src=top_track[op].previewURL;
+       audi.play();
+       name1.innerHTML=top_track[op].name;
+       poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[op].albumId+"/images/500x500.jpg";
+       audi.setAttribute("controls","");
+      
+     
+ })
+}
+
+ function ouv()
+ {
+  
+ 
+    audi.addEventListener("ended",()=>{
+    
+      const ra=Math.round(Math.random()*10)+""+Math.round(Math.random()*10);
+       
+        audi.src=top_track[ra].previewURL;
+        audi.play();
+        name1.innerHTML=top_track[ra].name;
+        poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[ra].albumId+"/images/500x500.jpg";
+        audi.setAttribute("controls","");
+       
+      
+      
+        
+     })
+ 
+ }
 
 
  const list_of_topic_100=d.querySelectorAll(".list_of_topic li");
@@ -475,3 +507,29 @@ vol.addEventListener("change",(e)=>{
  
 
  )
+
+ const sufling=d.querySelector(".fa-shuffle");
+ let ru=true;
+ sufling.addEventListener("click",()=>{
+  
+  if(ru)
+  {
+   const ra=Math.round(Math.random()*10)+""+Math.round(Math.random()*10);
+   audi.src=top_track[ra].previewURL;
+   audi.play();
+   name1.innerHTML=top_track[ra].name;
+   poster.src="https://api.napster.com/imageserver/v2/albums/"+top_track[ra].albumId+"/images/500x500.jpg";
+   audi.setAttribute("controls","");
+   play.style.visibility="hidden";
+   d.querySelector(".fa-pause").style.visibility="visible";
+   audio_control()
+   ouv()
+  }
+  else
+  {
+   fuv(-1)
+  }
+ 
+   sufling.classList.toggle("sade");
+   ru=!ru;
+ })
