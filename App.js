@@ -262,7 +262,7 @@ function audio_control()
     //range=Math.floor(audi.duration); 
    //d.querySelector(".range").setAttribute("range",Math.floor(audi.duration)) ; 
     
-    let h=0;
+  
     let ad=audi.ended;
    const df= setInterval(()=>{
        
@@ -438,7 +438,7 @@ vol.addEventListener("change",(e)=>{
       {
 
       }
-      e.target.value=null;
+      e.target.value="";
    }
   
    
