@@ -104,12 +104,14 @@ const get1= async ()=>{
      input1.setAttribute("type","text");
      input1.classList.add("h3");
      input1.value=e.name;
+     input1.setAttribute("id","inp23")
      ///--------------------------///
      const input2=d.createElement("input");
      input2.setAttribute("disabled","");
      input2.setAttribute("type","text");
      input2.classList.add("h4");
      input2.value=e.artistName;
+     input2.setAttribute("id","inpt23")
      ///-------------------------------///
      
 
@@ -152,6 +154,7 @@ async function get2()
                 const div1=d.createElement("div");
                 div1.setAttribute("id","card12");
                 div1.classList.add("card");
+              
                 ///---------///
                 const img_main=d.createElement("img");
                 img_main.setAttribute("id","im123");
@@ -163,12 +166,14 @@ async function get2()
                 input1.setAttribute("type","text");
                 input1.classList.add("h3");
                 input1.value=e.name;
+                input1.setAttribute("id","inp23")
                 ///--------------------------///
                 const input2=d.createElement("input");
                 input2.setAttribute("disabled","");
                 input2.setAttribute("type","text");
                 input2.classList.add("h4");
                 input2.value=e.artistName;
+                input2.setAttribute("id","inpt23")
                 ///-------------------------------///
                 
            

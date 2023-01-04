@@ -126,11 +126,18 @@
 
     #Nav .content input::-webkit-input-placeholder {
         font-size: 6px;
+        left: 2px;
+        
     }
 
     #Nav .content div {
 
         width: 20%;
+    }
+    #redf
+    {
+        font-size: 13px;
+
     }
 
     #bl12 {
@@ -207,6 +214,24 @@
     margin-left: 70px;
   }
   
+  #card12
+  {
+    
+    height: 125px;
+    min-height: 125px;
+  }
+  #im123
+  {
+   
 
+  }
+  #inp23
+  {
+   color: black;
+  }
+  #inpt23
+  {
+     color: aqua;
+  }
 
 }
