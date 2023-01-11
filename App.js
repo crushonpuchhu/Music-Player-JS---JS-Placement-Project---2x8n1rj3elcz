@@ -201,26 +201,7 @@ async function get2()
 }
 get2();
 
-// console.log(top_track)
 
-
-
-//v2.0/artists/top
-//const albumsq=fetch("https://api.napster.com/v2.0/artists/top?apikey=NTAzOTE3OTMtNGIxNy00YzdkLWExMDAtYTk2MzA5MDM3ZGFj")
-//albumsq.then((da)=>{
-//     da.json().then((dr)=>{
-//         //  console.log(dr);
-//     })
-// })
-
-// console.log("hello");
-// //artist//
-// const albumsp=fetch("https://api.napster.com/v2.2/artists/Art.28463069/albums?apikey=NTAzOTE3OTMtNGIxNy00YzdkLWExMDAtYTk2MzA5MDM3ZGFj")
-// albumsp.then((d)=>{
-//     d.json().then((df)=>{
-//         console.log(df);
-//     })
-// })
 
 
 // ////////////////-------------------------------------------------------------------------------//////////////////////////
@@ -297,57 +278,6 @@ function audio_control()
 }
 
 
-///////====//
-// function cns()
-// {
-//     const p=d.querySelector(".pp");
-//     d.querySelector(".range").value=0;
-     
-//     setInterval(()=>{
-        
-//        p.innerHTML="00 :"+Math.floor(audi.duration); 
-//         d.querySelector(".range").setAttribute("max",Math.floor(audi.duration)) 
-         
-//     },1000)
-
-     
-//     let k=0;
-    
-//     const df=setInterval(()=>{
-       
-//             //d.querySelector(".range").value=Math.floor(audi.currentTime)
-        
-//             d.querySelector(".range").value=Math.floor(audi.currentTime)  
-//         d.querySelector("#po").innerHTML="00:"+Math.floor(audi.currentTime);
-        
-//         if(audi.ended && k==0)
-//         {   
-               
-//             play.style.visibility="visible";
-//             d.querySelector(".fa-pause").style.visibility="hidden";
-//             d.querySelector(".range").value=0;
-//             k=k+1;
-//         }
-//         else
-//         {    if(k!=0)
-//             {
-//                 d.querySelector(".range").value=0;      
-//                 clearInterval(df);          
-//             }
-           
-              
-            
-              
-           
-            
-//         }
-        
-        
-        
-//     },1000)
-// }
-
-
 
 
 /////////////--------------/////////////
@@ -391,6 +321,8 @@ vol.addEventListener("change",(e)=>{
 
  function fuv(io)
  {  let op=io;
+   if(Number.isInteger(op))
+  {
    audi.addEventListener("ended",()=>{
     
       //  const ra=Math.round(Math.random()*10)+""+Math.round(Math.random()*10);
@@ -403,7 +335,8 @@ vol.addEventListener("change",(e)=>{
        audi.setAttribute("controls","");
       
      
- })
+     })
+  }
 }
 
  function ouv()
@@ -433,6 +366,11 @@ vol.addEventListener("change",(e)=>{
  list_of_topic_100[0].addEventListener("click",()=>{
    filt[0].style.visibility="visible";
    filt[1].style.visibility="visible";
+   
+   setTimeout(()=>{
+      d.querySelector(".search-items").style.visibility="hidden"
+   
+   },100)
    // d.querySelector(".middel_section").id="";
  })
  list_of_topic_100[1].addEventListener("click",()=>{
@@ -448,6 +386,7 @@ vol.addEventListener("change",(e)=>{
 
  const input_div=d.querySelector(".filletr");
  input_div.addEventListener("keydown",(e)=>{
+
    if(e.key=="Enter")
    {
       
@@ -469,6 +408,19 @@ vol.addEventListener("change",(e)=>{
       else
       {
 
+      }
+      
+     
+      ////new fillter///
+      if(e.target.value!="")
+      {
+         const arr=top_track.filter((data)=>{
+            return (data.name.startsWith(e.target.value.toUpperCase())||data.name==e.target.value/*||data.name.includes(e.target.value)*/);
+   
+         })
+         d.querySelector(".search-items").style.visibility="visible";
+         filterp(arr);
+   
       }
       e.target.value="";
    }
@@ -533,3 +485,56 @@ vol.addEventListener("change",(e)=>{
    sufling.classList.toggle("sade");
    ru=!ru;
  })
+
+ function filterp(data)
+ {
+   data.forEach((e,i)=>{
+      const div1=d.createElement("div");
+   div1.setAttribute("id","card12");
+   div1.classList.add("card");
+   div1.addEventListener("click",()=>{
+      
+      audi.src=e.previewURL;
+      name1.innerHTML=e.name;
+      poster.src="https://api.napster.com/imageserver/v2/albums/"+e.albumId+"/images/500x500.jpg";
+      audi.setAttribute("controls","");
+      audi.play();
+      audio_control()
+       play.style.visibility="hidden";
+       d.querySelector(".fa-pause").style.visibility="visible";
+      fuv(e)
+   })
+   ///---------///
+   const img_main=d.createElement("img");
+   img_main.setAttribute("id","im123");
+   img_main.src="https://api.napster.com/imageserver/v2/albums/"+e.albumId+"/images/500x500.jpg";
+   img_main.alt="poster";
+   ////-----------------------////
+   const input1=d.createElement("input");
+   input1.setAttribute("disabled","");
+   input1.setAttribute("type","text");
+   input1.classList.add("h3");
+   input1.value=e.name;
+   input1.setAttribute("id","inp23")
+   ///--------------------------///
+   const input2=d.createElement("input");
+   input2.setAttribute("disabled","");
+   input2.setAttribute("type","text");
+   input2.classList.add("h4");
+   input2.value=e.artistName;
+   input2.setAttribute("id","inpt23")
+   ///-------------------------------///
+   
+
+    ///----apppends-////
+  
+    div1.append(img_main,input1,input2);
+    ////-------------////
+    d.querySelector(".search-items").append(div1);
+
+    setTimeout(()=>{
+      run();
+    },2000)
+   })
+ }
+
