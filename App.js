@@ -1,5 +1,6 @@
 const d=document;
 let pervi;
+let h=0;
 
 setTimeout(()=>{
     d.querySelector(".pp").innerHTML=(audi.duration/60).toFixed(2);  //num.toFixed(2)
@@ -270,8 +271,9 @@ function audio_control()
         
         
     },1000)
+
     document.querySelector(".range").addEventListener("change",(e)=>{
-        console.log(e.target.value);
+ 
         audi.currentTime=e.target.value;
      })
     
@@ -368,8 +370,8 @@ vol.addEventListener("change",(e)=>{
    filt[1].style.visibility="visible";
    
    setTimeout(()=>{
-      d.querySelector(".search-items").style.visibility="hidden"
-   
+      d.querySelector(".search-items").remove();
+       h=0;
    },100)
    // d.querySelector(".middel_section").id="";
  })
@@ -415,11 +417,12 @@ vol.addEventListener("change",(e)=>{
       if(e.target.value!="")
       {
          const arr=top_track.filter((data)=>{
-            return (data.name.startsWith(e.target.value.toUpperCase())||data.name==e.target.value/*||data.name.includes(e.target.value)*/);
+            return (data.name.startsWith(e.target.value.toUpperCase())||data.name==e.target.value);
    
          })
-         d.querySelector(".search-items").style.visibility="visible";
+         // d.querySelector(".search-items").style.visibility="visible";
          filterp(arr);
+         
    
       }
       e.target.value="";
@@ -487,7 +490,14 @@ vol.addEventListener("change",(e)=>{
  })
 
  function filterp(data)
- {
+ {  
+    if(h==0)
+    {
+      var divb=d.createElement("div");
+      divb.classList.add("search-items");
+      d.querySelector("#red2").append(divb);
+   
+    }
    data.forEach((e,i)=>{
       const div1=d.createElement("div");
    div1.setAttribute("id","card12");
@@ -536,5 +546,6 @@ vol.addEventListener("change",(e)=>{
       run();
     },2000)
    })
+   h++;
  }
 
